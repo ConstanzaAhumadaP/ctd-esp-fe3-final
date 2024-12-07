@@ -1,20 +1,43 @@
 import React from "react";
+import { useGlobalStates } from "./utils/global.context";
 
+const Card = ({ dentist, fav, isHome }) => {
+  const { favDispatch, favState } = useGlobalStates();
 
-const Card = ({ name, username, id }) => {
+  // Función para manejar agregar o eliminar de favoritos
+  const toggleFav = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+    // Solo permitir agregar en Home, no eliminar
+    if (isHome) {
+      // Agregar a favoritos
+      favDispatch({ type: "ADD_FAV", payload: dentist });
+      alert("Dentist added to favorites");
+    } else {
+      // Permitir eliminar o agregar según el estado
+      const isFav = favState.favList.some((favDentist) => favDentist.id === dentist.id);
+      if (isFav) {
+        favDispatch({ type: "REMOVE_FAV", payload: dentist });
+        alert("Dentist removed from favorites");
+      } else {
+        favDispatch({ type: "ADD_FAV", payload: dentist });
+        alert("Dentist added to favorites");
+      }
+    }
+  };
+
+  // Verificar si el dentista está en los favoritos
+  const isFav = favState.favList.some((favDentist) => favDentist.id === dentist.id);
 
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
-
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+      <img className="imgdoctor" src="/images/doctor.jpg" alt="Foto doctor" />
+      <h3>{dentist.name}</h3>
+      <h4>{dentist.username}</h4>
+      <button onClick={toggleFav} className="favButton">
+        {isFav ? "⭐" : "⭐"} {/* Si es favorito, mostramos la estrella llena */}
+      </button>
     </div>
   );
 };

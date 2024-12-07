@@ -1,64 +1,198 @@
 body {
+  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.app{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
 .favButton{
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
   border: none;
   width: 100%;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.favButton-contact{
+  background-color: rgba(136, 136, 136, 0.116);
+  padding: 10px;
+  border: none;
+  width: 322px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 
+.detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.detail-container{
+  margin-bottom: 400px;
+}
+.dentist-table {
+  width: 1250px;
+  margin: 10px; 
+  border-collapse: collapse;
+}
+.dentists-title {
+  margin-top: -60px;
+}
 h1{
   text-align: center;
 }
 
 nav{
   display: flex;
-  width: 80vw;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+ }
+
+.themeButton{
+  width: 2rem;
+  height: 2rem;
+  order: 3;
+  background-color: #000;
+    
+}
+div nav div{
+ display: flex;
+ justify-content: space-around;
+ width: 30%;
+ flex-wrap: nowrap;
+ order: 2;
+ margin-left: 250px;
+ }
+
+ nav div a{
+  color: white;
+  margin-left: 8px
+ }
+
+ nav a h1{
+  color: white;
+ }
+
+ nav h1 span{
+  color: rgb(247, 122, 122);
+ }
+ 
+.contact-text {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;  
+  justify-content: flex-start; 
+  padding: 20px; 
+  position: relative;
+}
+
+form >label{
+  margin-top: 10px;
+}
+form > input{
+width: 300px;
+padding: 10px;
+margin-bottom: 20px ;
+border: solid #888686;
+border-radius: 5px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding: 1rem;
+  gap: 15px;
+  padding: 10px;
+  margin: 0 auto; 
+  position: relative;
+  margin-bottom: 200px;
 }
 
-a{
-  color: #000;
-  text-decoration: none;
-  margin: 5px;
-  cursor: pointer;
+.error{
+ color: red;
+ margin-top: 70px;
+ padding: 20px;
+ border-radius: 5px;
+ font-size: 20px;
+ background-color: rgb(206, 208, 209);
+ font-size: 20px;
+ width: 500px;
+ 
 }
-a:hover{
-  color: rgb(136, 136, 136);
-} 
-
+.alert{
+  margin-top: 70px;
+  padding: 20px;
+  border-radius: 5px;
+  color: rgb(0, 110, 255);
+  background-color: rgb(206, 208, 209);
+  font-size: 20px;
+}
 footer {
   display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
   position: relative;
   bottom: 0;
-  width: 90%;
+  width: 100%;
   height: 40px;
   margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-footer > img{
-  width: 200px;
-  margin: 0;
+footer .logo{
+    width: 200px;
 }
-footer > p{
-  margin: 0;
-  padding-top: 0.7rem;
+
+footer .ico{
+  width: 28px;
+  
+}
+.redesSociales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; 
+  padding: 10px; 
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; 
+  border-radius: 10px;
+  width: 40px;
+  height: 40px; 
+}
+
+.ico {
+  width: 25px; 
+  height: 25px; 
 }
 
 form{
@@ -78,6 +212,7 @@ form{
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  font-size: 12px;
 }
 
 .card:hover{
@@ -85,13 +220,24 @@ form{
 }
 
 .card-grid{
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 90vw;
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
+}
+
+.imgdoctor{
+  width: 100%;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+.nav-link h1 .odonto {
+  color: black;
 }
 
 table {
@@ -114,9 +260,42 @@ tr:nth-child(even) {
 }
 
 .dark{
-  background-color: #12121296;
+  background-color: #737373;
+  color: white;
+}
+.dark > nav> div> a {
   color: white;
 }
 .dark > a {
   color: white;
 }
+.dark nav{
+  background-color: black;
+}
+.dark .nav-link h1 .odonto {
+  color: white; 
+}
+ .dark .card{
+  color: white;
+ }
+.light nav{
+  background-color: white;
+}
+.light nav a {
+  color: black;
+}
+.dark .favButton{
+  background-color: #737373 ;
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+@media (max-width: 767px) {
+ nav{
+  flex-direction: column;
+}
+}
+
